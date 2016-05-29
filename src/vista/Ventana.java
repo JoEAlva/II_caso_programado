@@ -60,21 +60,15 @@ public class Ventana extends javax.swing.JFrame {
      * pantalla.
      */
     public boolean verificarObstaculo() {
-        boolean x = false;
-        if(jL_Personaje.getY()-100<jL_naveEnemigo.getY() && jL_naveEnemigo.getY()-100<jL_Personaje.getY() && jL_Personaje.getX()-50>jL_naveEnemigo.getX()) {
-            System.err.println("Siente el choque XD XD");
-            x = true;
+        
+        boolean colision = false;
+        if(jL_Personaje.getY()-80<jL_naveEnemigo.getY() && jL_Personaje.getX()==jL_naveEnemigo.getX() && jL_naveEnemigo.getX()+130>jL_Personaje.getX()) {
+            colision = true;
         }
         
-        return x;
+        return colision;
     
-    }
-    
-    public void ventanaSize() {
-     
-        
-        
-    }   
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -102,10 +96,11 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jL_Personaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nave.png"))); // NOI18N
+        jL_Personaje.setPreferredSize(new java.awt.Dimension(130, 105));
         getContentPane().add(jL_Personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 140, 110));
 
         jL_naveEnemigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/naveEnemigo.png"))); // NOI18N
-        getContentPane().add(jL_naveEnemigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 30, -1, -1));
+        getContentPane().add(jL_naveEnemigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondoFinal.png"))); // NOI18N
         getContentPane().add(jl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -500, 400, 1010));
@@ -204,8 +199,5 @@ public class Ventana extends javax.swing.JFrame {
     private javax.swing.JLabel jl_Fondo;
     // End of variables declaration//GEN-END:variables
 
-    public boolean estaPresionado() {
-        return presionado;
-    }
 
 }//Fin de la clase Ventana

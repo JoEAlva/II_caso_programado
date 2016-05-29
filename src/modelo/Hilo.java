@@ -39,12 +39,19 @@ public class Hilo extends Thread{
                }else {
                    metodosEnemigo.cambiarDireccion();
                }
+               metodosPersonaje.comprobarColision();
+               if(metodosPersonaje.comprobarColision()) {
+                   
+                   this.stop();
+               }
            }
+           
        }
        catch(Exception e)
        {
            System.out.println("Error en la ejecución: "+e);
        }
    }
+   
   
 }//Fin de la clase Hilo

@@ -15,7 +15,7 @@ public class MetodosPersonaje {
     Ventana ventana;
     
     //Variables de la clase
-    int velocidad = 10;
+    int velocidad = 30;
     
     //Constructor de la clase
     public MetodosPersonaje(Ventana ventana) {
@@ -95,13 +95,10 @@ public class MetodosPersonaje {
         //System.out.println("Location" + location);
         
         if(location < 2) {
-            
             limiteIzq = true;
-            
         }
-       
+        
         return limiteIzq;
-    
     }
     
     /**
@@ -116,13 +113,10 @@ public class MetodosPersonaje {
        int location = ventana.jL_Personaje.getY(); 
        
        if(location < 5) {
-           
            limiteArriba = true;
-           
        }
        
        return limiteArriba;
-       
     }
         
     /**
@@ -137,13 +131,10 @@ public class MetodosPersonaje {
         int location = ventana.jL_Personaje.getX();
         
         if(location > 270) {
-            
             limiteDer = true;
-            
         }
        
         return limiteDer;
-        
     }
     
     /**
@@ -157,13 +148,20 @@ public class MetodosPersonaje {
         
         int location = ventana.jL_Personaje.getY();
         
-        if(location > 400) {
-            
+        if(location > 410) {
             limiteAbajo = true;
-            
         }
   
         return limiteAbajo;   
+    }
+    
+    public boolean comprobarColision() {
+        
+        boolean colision = false;
+        if(ventana.verificarObstaculo()) {
+            colision = true;
+        }
+        return colision;
     }
     
 }//Fin de la clase MetodosPersonaje
