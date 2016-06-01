@@ -28,7 +28,7 @@ public class Hilo extends Thread{
    public void run()
    {
        try{
-           
+
            while(true)
            {
                sleep(100);
@@ -39,11 +39,12 @@ public class Hilo extends Thread{
                }else {
                    metodosEnemigo.cambiarDireccion();
                }
-               metodosPersonaje.comprobarColision();
+//               metodosPersonaje.comprobarColision();
                if(metodosPersonaje.comprobarColision()) {
                    
-                   this.stop();
+//                   this.suspend();
                }
+               ventana.detectarColision();
            }
            
        }

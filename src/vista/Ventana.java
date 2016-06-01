@@ -3,6 +3,7 @@
  * Universidad de Costa Rica - Sede del Pacífico Arnoldo Ferreto Segura
  */
 package vista;
+import java.awt.Rectangle;
 import modelo.Hilo;
 import modelo.MetodosPersonaje;
 import modelo.MetodosEnemigo;
@@ -55,6 +56,22 @@ public class Ventana extends javax.swing.JFrame {
         }
     }
     
+    public void detectarColision() {
+        int xPersonaje = jL_Personaje.getX();
+        int yPersonaje = jL_Personaje.getY();
+        
+        int xEnemigo = jL_naveEnemigo.getX();
+        int yEnemigo = jL_naveEnemigo.getY();
+        
+        
+        Rectangle p = new Rectangle(xPersonaje, yPersonaje, jL_Personaje.getWidth(), jL_Personaje.getHeight());
+        Rectangle e = new Rectangle(xEnemigo, yEnemigo, jL_naveEnemigo.getWidth(), jL_naveEnemigo.getHeight());
+        
+        if(p.intersects(e)) {
+            System.out.println("Surpraise"); 
+        }
+    }
+    
     /**
      * Método que verica si el personaje se ha encontrado con el obstáculo en la
      * pantalla.
@@ -100,7 +117,7 @@ public class Ventana extends javax.swing.JFrame {
         getContentPane().add(jL_Personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 140, 110));
 
         jL_naveEnemigo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/naveEnemigo.png"))); // NOI18N
-        getContentPane().add(jL_naveEnemigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        getContentPane().add(jL_naveEnemigo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 80, 90));
 
         jl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondoFinal.png"))); // NOI18N
         getContentPane().add(jl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -500, 400, 1010));
