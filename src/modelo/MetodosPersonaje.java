@@ -3,7 +3,7 @@
  * Universidad de Costa Rica - Sede del Pacífico Arnoldo Ferreto Segura
  */
 package modelo;
-import vista.Ventana;
+import vista.FRM_VentanaJuego;
 
 /**
  *
@@ -12,13 +12,13 @@ import vista.Ventana;
 public class MetodosPersonaje {
     
     //Referencias de la clase
-    Ventana ventana;
+    FRM_VentanaJuego ventana;
     
     //Variables de la clase
     int velocidad = 30;
     
     //Constructor de la clase
-    public MetodosPersonaje(Ventana ventana) {
+    public MetodosPersonaje(FRM_VentanaJuego ventana) {
         this.ventana = ventana;
     }    
     
@@ -94,7 +94,7 @@ public class MetodosPersonaje {
         int location = ventana.jL_Personaje.getX();
         //System.out.println("Location" + location);
         
-        if(location < 2) {
+        if(location < -10) {
             limiteIzq = true;
         }
         
@@ -112,7 +112,7 @@ public class MetodosPersonaje {
        
        int location = ventana.jL_Personaje.getY(); 
        
-       if(location < 5) {
+       if(location < 2) {
            limiteArriba = true;
        }
        
@@ -130,7 +130,7 @@ public class MetodosPersonaje {
         
         int location = ventana.jL_Personaje.getX();
         
-        if(location > 270) {
+        if(location > 850) {
             limiteDer = true;
         }
        
@@ -148,7 +148,7 @@ public class MetodosPersonaje {
         
         int location = ventana.jL_Personaje.getY();
         
-        if(location > 410) {
+        if(location > 600) {
             limiteAbajo = true;
         }
   

@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import vista.Ventana;
+import vista.FRM_VentanaJuego;
 /**
  *
  * @author JorgeIgnacio
@@ -12,7 +12,7 @@ import vista.Ventana;
 public class MetodosEnemigo {
 
     //Referencias de la clase
-    Ventana ventana;
+    FRM_VentanaJuego ventana;
     
     //Variables de la clase
     private static final int ESTE = 1;
@@ -22,7 +22,7 @@ public class MetodosEnemigo {
     private int direccion;
     
     //Contructor de la clase
-    public MetodosEnemigo(Ventana ventana) {
+    public MetodosEnemigo(FRM_VentanaJuego ventana) {
         this.ventana = ventana;
         setDireccion(OESTE);
     }
@@ -33,10 +33,10 @@ public class MetodosEnemigo {
         }
         switch(direccion) {
             case ESTE:
-                ventana.jL_naveEnemigo.setLocation(ventana.jL_naveEnemigo.getX() + velocidad, ventana.jL_naveEnemigo.getY());
+                ventana.jL_naveEnemigo01.setLocation(ventana.jL_naveEnemigo01.getX() + velocidad, ventana.jL_naveEnemigo01.getY());                
                 break;
             case OESTE:
-                ventana.jL_naveEnemigo.setLocation(ventana.jL_naveEnemigo.getX() - velocidad, ventana.jL_naveEnemigo.getY());
+                ventana.jL_naveEnemigo01.setLocation(ventana.jL_naveEnemigo01.getX() - velocidad, ventana.jL_naveEnemigo01.getY());
                 break;
         }
         
@@ -44,8 +44,7 @@ public class MetodosEnemigo {
     
     public boolean puedeMoverse() {
         
-        int anchoVentana = ventana.getWidth();
-        int x = ventana.jL_naveEnemigo.getX();
+        int x = ventana.jL_naveEnemigo01.getX();
         switch(direccion) {
             case ESTE:
                 x++;
@@ -56,9 +55,9 @@ public class MetodosEnemigo {
                 break;
         }
         //Prueba para el borde exterior
-        if(x > 320) {
+        if(x >= 850) {
             return false;
-        }else if( x < 0) {
+        }else if( x <= 0) {
             return false;
         }
         return true;

@@ -4,7 +4,7 @@
  */
 package modelo;
 
-import vista.Ventana;
+import vista.FRM_VentanaJuego;
 
 /**
  *
@@ -13,18 +13,22 @@ import vista.Ventana;
 public class Hilo extends Thread{
 
     //Referencias de la clase
-    Ventana ventana;
+    FRM_VentanaJuego ventana;
     MetodosPersonaje metodosPersonaje;
     MetodosEnemigo metodosEnemigo;
+  
     
-   public Hilo(Ventana ventana, MetodosPersonaje mp, MetodosEnemigo me)
+   public Hilo(FRM_VentanaJuego ventana, MetodosPersonaje mp, MetodosEnemigo me)
    {
        this.ventana=ventana;
        this.metodosPersonaje = mp;
        this.metodosEnemigo = me;
+  
    }
    
    @Override
+   
+   //Método que inicia el hilo
    public void run()
    {
        try{
@@ -32,7 +36,7 @@ public class Hilo extends Thread{
            while(true)
            {
                sleep(100);
-               ventana.moverFondo();
+//               ventana.moverFondo();
                metodosPersonaje.moverPersonaje();
                if(metodosEnemigo.puedeMoverse()) {
                    metodosEnemigo.moverse();
@@ -46,6 +50,7 @@ public class Hilo extends Thread{
                }
                ventana.detectarColision();
            }
+           
            
        }
        catch(Exception e)
