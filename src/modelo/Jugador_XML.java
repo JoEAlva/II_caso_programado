@@ -28,7 +28,7 @@ import org.xml.sax.SAXException;
  *  La clase que se utiliza para obtener la informacion. Para este caso se
  * necesita FRM_Jugador y/o Puntajes
  */
-//import Vista.FRM_MantenimientoEstudiantes; 
+import vista.FRM_VentanaJuego;
 
 /**
  * 
@@ -37,7 +37,8 @@ import org.xml.sax.SAXException;
 public class Jugador_XML 
 {
 //    Referencia de la clase
-//    FRM_MantenimientoEstudiantes ventana;
+    FRM_VentanaJuego fRM_VentanaJuego;
+    
     DocumentBuilderFactory factory;
     DocumentBuilder builder;
     DOMImplementation implementation;
@@ -58,7 +59,7 @@ public class Jugador_XML
     public Jugador_XML(/*FRM_MantenimientoEstudiantes ventana*/) 
     {
 //        this.ventana=ventana;  
-        nombreArchivo="Estudiante";
+        nombreArchivo="jugador";
         
         if(cargarXML())
         {
@@ -70,7 +71,7 @@ public class Jugador_XML
 //            ventana.mostrarMensaje("No existía un archivo XML_Estudiantes creado, ya fue creado y puede proceder a utilizarlo");
         }
         
-        arregloInformacion=new String[3];
+        arregloInformacion=new String[2];
         titulos = new ArrayList();
         valores = new ArrayList();
     }
@@ -109,7 +110,7 @@ public class Jugador_XML
             document.getDocumentElement().normalize();
             cargo=true;
             
-            NodeList nList = document.getElementsByTagName("Estudiante");
+            NodeList nList = document.getElementsByTagName("jugador");
             Node nNode = nList.item(0);
             raiz = (Element) nNode;
                 
@@ -124,24 +125,20 @@ public class Jugador_XML
         
         try{
             
-            raiz = document.createElement("Estudiante");
-            principal = document.createElement("Estudiante");
+            raiz = document.createElement("jugador");
+            principal = document.createElement("jugador");
             document.getDocumentElement().appendChild(raiz);
             
-            Element valor1 = document.createElement("cedula");
+            Element valor1 = document.createElement("jugador");
             Text text = document.createTextNode(arregloInformacion[0]);
-            Element valor2 = document.createElement("nombre");
+            Element valor2 = document.createElement("tiempo");
             Text text2 = document.createTextNode(arregloInformacion[1]);
-            Element valor3 = document.createElement("direccion");
-            Text text3 = document.createTextNode(arregloInformacion[2]);
-            
+                        
             raiz.appendChild(valor1);
             valor1.appendChild(text);
             raiz.appendChild(valor2);
             valor2.appendChild(text2);
-            raiz.appendChild(valor3);
-            valor3.appendChild(text3);
-            
+                        
             source = new DOMSource(document);
             result = new StreamResult(new java.io.File(nombreArchivo+".xml"));
             console = new StreamResult(System.out);
@@ -177,10 +174,10 @@ public class Jugador_XML
             Logger.getLogger(Jugador_XML.class.getName()).log(Level.SEVERE, null, ex);
         }   
     }
-    public boolean consultarInformacionDelXml(String cedula)
+    public boolean consultarInformacionDelXml(String nombre)
     { 
          Element raiz = document.getDocumentElement();
-         NodeList listaDeItems = raiz.getElementsByTagName("Estudiante");
+         NodeList listaDeItems = raiz.getElementsByTagName("jugador");
          Node tag=null,datoContenido=null;
 
          boolean itemEncontrado=false,tituloCedula=false;
@@ -195,12 +192,12 @@ public class Jugador_XML
                  tag = datosItem.item(contadorTags); 
                  datoContenido = tag.getFirstChild();
 
-                 if(tag.getNodeName().equals("cedula") && datoContenido.getNodeValue().equals(""+cedula) )
+                 if(tag.getNodeName().equals("nombre") && datoContenido.getNodeValue().equals(""+nombre) )
                  {
-                     System.out.println("Existe la cédula");
+                     System.out.println("Existe el nombre");
                      itemEncontrado=true;     
                  }
-                 if(itemEncontrado && contador<3)
+                 if(itemEncontrado && contador<2)
                  {
                     arregloInformacion[contador]=datoContenido.getNodeValue();
                     contador++;
@@ -218,10 +215,9 @@ public class Jugador_XML
     public void modificarInformacionDelXml(String informacion[])
     { 
          Element raiz = document.getDocumentElement();
-         NodeList listaDeItems = raiz.getElementsByTagName("Estudiante");
+         NodeList listaDeItems = raiz.getElementsByTagName("jugador");
          Node tag=null,datoContenido=null;
-         String arregloInformacion[]=new String[3];
-         boolean itemEncontrado=false,tituloCedula=false;
+         boolean itemEncontrado=false;
          int contador=0;
          try
          {
@@ -233,11 +229,11 @@ public class Jugador_XML
                 {   
                     tag = datosItem.item(contadorTags); 
                     datoContenido = tag.getFirstChild();
-                    if(tag.getNodeName().equals("cedula") && datoContenido.getNodeValue().equals(""+informacion[0]) )
+                    if(tag.getNodeName().equals("nombre") && datoContenido.getNodeValue().equals(""+informacion[0]) )
                     {   
                        itemEncontrado=true;     
                     }
-                    if(itemEncontrado && contador<3)
+                    if(itemEncontrado && contador<2)
                     {
                         datoContenido.setNodeValue(informacion[contador]);                    
                         contador++;
@@ -256,10 +252,10 @@ public class Jugador_XML
             System.err.println("Error al modificar: " + e);
         }
     }
-    public void eliminarInformacionDelXml(String cedula)
+    public void eliminarInformacionDelXml(String nombre)
     { 
          Element raiz = document.getDocumentElement();
-         NodeList listaDeItems = raiz.getElementsByTagName("Estudiante");
+         NodeList listaDeItems = raiz.getElementsByTagName("jugador");
          Node tag=null,datoContenido=null;
          String arregloInformacion[]=new String[3];
          boolean itemEncontrado=false, tituloCedula=false;
@@ -273,7 +269,7 @@ public class Jugador_XML
                 {
                     tag = datosItem.item(contadorTags); 
                     datoContenido = tag.getFirstChild();
-                    if(tag.getNodeName().equals("cedula") && datoContenido.getNodeValue().equals(""+cedula) )
+                    if(tag.getNodeName().equals("nombre") && datoContenido.getNodeValue().equals(""+nombre) )
                     {
                        itemEncontrado=true;
                        raiz.removeChild(item);

@@ -63,15 +63,30 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jB_Jugar.setText("Jugar");
+        jB_Jugar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jB_JugarKeyPressed(evt);
+            }
+        });
         getContentPane().add(jB_Jugar);
         jB_Jugar.setBounds(510, 180, 120, 26);
 
         jB_Puntajes.setText("Puntajes");
+        jB_Puntajes.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jB_PuntajesKeyPressed(evt);
+            }
+        });
         getContentPane().add(jB_Puntajes);
         jB_Puntajes.setBounds(510, 220, 120, 26);
 
         jB_Creditos.setText("Créditos");
         jB_Creditos.setActionCommand("Creditos");
+        jB_Creditos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jB_CreditosKeyPressed(evt);
+            }
+        });
         getContentPane().add(jB_Creditos);
         jB_Creditos.setBounds(510, 260, 120, 26);
 
@@ -81,6 +96,32 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jB_JugarKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jB_JugarKeyPressed
+       
+        if(evt.getKeyCode() == 10) {
+            
+            controlador_FRM_VentanaInicio.jugarRapido();
+            
+        }
+        
+    }//GEN-LAST:event_jB_JugarKeyPressed
+
+    private void jB_PuntajesKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jB_PuntajesKeyPressed
+      
+        if(evt.getKeyCode() == 10) {
+            controlador_FRM_VentanaInicio.puntajesRapido();
+        }
+        
+    }//GEN-LAST:event_jB_PuntajesKeyPressed
+
+    private void jB_CreditosKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jB_CreditosKeyPressed
+        
+        if(evt.getKeyCode() == 10) {
+            controlador_FRM_VentanaInicio.creditosRapido();
+        }
+        
+    }//GEN-LAST:event_jB_CreditosKeyPressed
 
     /**
      * @param args the command line arguments
@@ -113,7 +154,6 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new FRM_VentanaJuego().setVisible(true);
                   new FRM_VentanaInicio().setVisible(true);
             }
         });

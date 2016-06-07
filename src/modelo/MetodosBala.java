@@ -3,81 +3,80 @@
  * Universidad de Costa Rica - Sede del Pacífico Arnoldo Ferreto Segura
  */
 package modelo;
+
 import vista.FRM_VentanaJuego;
 
 /**
  *
  * @author JorgeIgnacio
  */
-public class MetodosPersonaje {
-    
-    //Referencias de la clase
+public class MetodosBala {
+
+    //Referencias de clase
     FRM_VentanaJuego ventana;
     
     //Variables de la clase
     int velocidad = 30;
     
     //Constructor de la clase
-    public MetodosPersonaje(FRM_VentanaJuego ventana) {
+    public MetodosBala(FRM_VentanaJuego ventana) {
+        
         this.ventana = ventana;
-    }    
+        
+    }
     
-    /**
-     * Método que mediante condicionales permite y limita el movimiento del
-     * objeto en el mundo
-     */
-    public void moverPersonaje() {
+    public void moverBala() {
         
         //Si el jugador presionó la flecha izquierda
         if(ventana.estado.equals("izquierda")) {
             
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX() - velocidad, ventana.jL_Personaje.getY());
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX() - velocidad, ventana.jL_Bala.getY());
             
             if(comprobarIzq()) { 
-                ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX() + velocidad, ventana.jL_Personaje.getY());
+                ventana.jL_Bala.setLocation(ventana.jL_Bala.getX() + velocidad, ventana.jL_Bala.getY());
             }
             //Si el jugador soltó la flecha izquierda
         }else if(ventana.estado.equals("EnElSuelo")) {
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY());
         }
         
         //Si el jugador presionó la flecha arriba
         if(ventana.estado.equals("arriba")) {
             
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() - velocidad);
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() - velocidad);
             
             if(comprobarArriba()) {
-                ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() + velocidad);
+                ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() + velocidad);
             }
             //Si el jugador soltó la tecla flecha arriba
         }else if(ventana.estado.equals("EnElSuelo")) {
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY());
         }
 
         //Si el jugador presionó la flecha derecha
         if(ventana.estado.equals("derecha")) {
             
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX() + velocidad, ventana.jL_Personaje.getY());
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX() + velocidad, ventana.jL_Bala.getY());
             
             if(comprobarDer()) {
-                ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX() - velocidad, ventana.jL_Personaje.getY());
+                ventana.jL_Bala.setLocation(ventana.jL_Bala.getX() - velocidad, ventana.jL_Bala.getY());
             }
             //Si el jugador soltó la tecla flecha derecha
         }else if(ventana.estado.equals("EnElSuelo")) {
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY());
         }
         
         //Si el jugadorpresionó la flecha abajo
         if(ventana.estado.equals("abajo")) {
             
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() + velocidad);
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() + velocidad);
             
             if(comprobarAbajo()) {
-                ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() - velocidad);
+                ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() - velocidad);
             }
             //Si el jugador soltó la tecla 
         }else if(ventana.estado.equals("EnElSuelo")) {
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY());
         }
         
     }//Fin del método moverPersonaje
@@ -91,7 +90,7 @@ public class MetodosPersonaje {
         
         boolean limiteIzq = false;
         
-        int location = ventana.jL_Personaje.getX();
+        int location = ventana.jL_Bala.getX();
         //System.out.println("Location" + location);
         
         if(location < -10) {
@@ -110,7 +109,7 @@ public class MetodosPersonaje {
         
        boolean limiteArriba = false;
        
-       int location = ventana.jL_Personaje.getY(); 
+       int location = ventana.jL_Bala.getY(); 
        
        if(location < 2) {
            limiteArriba = true;
@@ -128,7 +127,7 @@ public class MetodosPersonaje {
         
         boolean limiteDer = false;
         
-        int location = ventana.jL_Personaje.getX();
+        int location = ventana.jL_Bala.getX();
         
         if(location > 850) {
             limiteDer = true;
@@ -146,13 +145,40 @@ public class MetodosPersonaje {
         
         boolean limiteAbajo = false;
         
-        int location = ventana.jL_Personaje.getY();
+        int location = ventana.jL_Bala.getY();
         
         if(location > 580) {
             limiteAbajo = true;
         }
         return limiteAbajo;   
-    }  
-
+    }
     
-}//Fin de la clase MetodosPersonaje
+    /*
+    Método que hace moverse la bala en línea recta
+    */
+    public void dispararCañon() {
+        
+        if(ventana.bala.equals("disparo")) {
+            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() - velocidad );
+            
+        }else {
+            
+            moverBala();
+            
+        }
+        
+    }//Fin del método dispararCañon
+    
+    public boolean verificarPosicionBala() {
+        
+        boolean fueraDeVentana = false;
+        int posicion = ventana.jL_Bala.getY();
+        
+        if(posicion > 0) {
+            fueraDeVentana = true;
+        }
+        
+        return fueraDeVentana;
+    }
+        
+}// Fin de la clase MetodosBala

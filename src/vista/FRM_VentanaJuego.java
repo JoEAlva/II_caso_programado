@@ -4,12 +4,11 @@
  */
 package vista;
 import java.awt.Rectangle;
-import modelo.MetodosCronometro;
-import modelo.Hilo;
-import modelo.HiloCronometro;
+import modelo.HiloJuego;
+import modelo.MetodosBala;
 import modelo.MetodosPersonaje;
 import modelo.MetodosEnemigo;
-import modelo.MetodosCronometro;
+
 
 /**
  *
@@ -18,13 +17,15 @@ import modelo.MetodosCronometro;
 public class FRM_VentanaJuego extends javax.swing.JFrame {
 
     //Referencias de clases
-    Hilo hilo;
+    HiloJuego hilo;
+
     MetodosPersonaje metodosPersonaje;
     MetodosEnemigo metodosEnemigo;
-    MetodosCronometro cronometro;
+    MetodosBala metodosBala;
     
     //Se declaran las variables
     public String estado = "EnELSuelo";
+    public String bala = "cargada";
     
     //Constructor de la clase
     public FRM_VentanaJuego() {
@@ -35,10 +36,11 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         //Instancias de la clase
         metodosPersonaje = new MetodosPersonaje(this);
         metodosEnemigo = new MetodosEnemigo(this);
+        metodosBala = new MetodosBala(this);
         
-        hilo=new Hilo(this, metodosPersonaje, metodosEnemigo);
+        hilo = new HiloJuego(this, metodosPersonaje, metodosEnemigo, metodosBala);
         hilo.start();
-                
+                        
     }
     
     /**
@@ -75,20 +77,11 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         }
     }
     
-    /**
-     * Método que verica si el personaje se ha encontrado con el obstáculo en la
-     * pantalla.
-     */
-    public boolean verificarObstaculo() {
-        
-        boolean colision = false;
-        if(jL_Personaje.getY()-80<jL_naveEnemigo01.getY() && jL_Personaje.getX()==jL_naveEnemigo01.getX() && jL_naveEnemigo01.getX()+130>jL_Personaje.getX()) {
-            colision = true;
-        }
-        
-        return colision;
+    public void agregarTiempo(String tiempo) {
+//        this.jL_Tiempo.setText(tiempo);
+    }
     
-    }  
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -101,10 +94,10 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
 
         jL_Personaje = new javax.swing.JLabel();
         jL_naveEnemigo01 = new javax.swing.JLabel();
+        jL_Bala = new javax.swing.JLabel();
         jl_Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
         addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -121,10 +114,14 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         getContentPane().add(jL_Personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 110, 90));
 
         jL_naveEnemigo01.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nave-personaje.png"))); // NOI18N
-        getContentPane().add(jL_naveEnemigo01, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 110, 80));
+        getContentPane().add(jL_naveEnemigo01, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 110, -1));
+
+        jL_Bala.setForeground(new java.awt.Color(0, 255, 255));
+        jL_Bala.setText("BALA");
+        getContentPane().add(jL_Bala, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
 
         jl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
-        getContentPane().add(jl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 680));
+        getContentPane().add(jl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -132,29 +129,27 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     private void formKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyPressed
 
         if(evt.getKeyCode() == 65 ) {
-            
+
             estado = "izquierda";
             
         }
         if(evt.getKeyCode() == 68) {
-            
             estado = "derecha";
             
         }
         if(evt.getKeyCode() == 87) {
-            
+            System.out.println("Funciona");
             estado = "arriba";
             
         }
         if(evt.getKeyCode() == 83) {
-            
             estado = "abajo";
             
         }
         
         if(evt.getKeyCode() == 32) {
             
-            System.out.println("Tecla -espacio-");
+            bala = "disparo";
             
         }
         
@@ -183,11 +178,17 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
             
         }
         
+        if(evt.getKeyCode() == 32) {
+            
+            bala = "disparo";
+            
+        }
+        
     }//GEN-LAST:event_formKeyReleased
-
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel jL_Bala;
     public javax.swing.JLabel jL_Personaje;
     public javax.swing.JLabel jL_naveEnemigo01;
     private javax.swing.JLabel jl_Fondo;

@@ -17,7 +17,7 @@ public class MetodosEnemigo {
     //Variables de la clase
     private static final int ESTE = 1;
     private static final int OESTE = 2;
-    private int velocidad = 10;
+    private int velocidad = 20;
     
     private int direccion;
     
@@ -55,7 +55,7 @@ public class MetodosEnemigo {
                 break;
         }
         //Prueba para el borde exterior
-        if(x >= 850) {
+        if(x >= 860) {
             return false;
         }else if( x <= 0) {
             return false;

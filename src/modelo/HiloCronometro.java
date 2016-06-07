@@ -4,14 +4,26 @@
  */
 package modelo;
 
+import vista.FRM_VentanaJuego;
+
 /**
  *
  * @author JorgeIgnacio
  */
 public class HiloCronometro extends Thread {
 
+    //Variables de la clase
+    private int minutos = 0;
+    private int segundos = 0;
+    
+    //Referencias de clase
+    FRM_VentanaJuego fRM_VentanaJuego;
+    
     //Constructor de la clase
-    public HiloCronometro() {
+    public HiloCronometro(FRM_VentanaJuego fRM_VentanaJuego) {
+        
+        this.fRM_VentanaJuego = fRM_VentanaJuego;
+        
     }
         
     //Método que inicia el hilo
@@ -19,7 +31,15 @@ public class HiloCronometro extends Thread {
         
         try {
             
-            while (true) {                
+            while (true) {
+                
+                try {
+   
+                    tiempo();
+                    
+                    
+                } catch (Exception e) {
+                }
                 
             }
             
@@ -29,4 +49,23 @@ public class HiloCronometro extends Thread {
         
     }
     
+    public void tiempo() {
+        
+        for(minutos = 0; minutos < 60; minutos++) {
+            for(segundos = 0; segundos < 60; segundos++) {
+                this.fRM_VentanaJuego.agregarTiempo(obtenerTiempo());
+                try {
+                    sleep(1000);
+                } catch (Exception e) {
+                }
+            }
+        }
+        
+    }
+
+    //Getter
+    public String obtenerTiempo() {
+        return ""+this.minutos+":"+this.segundos;
+    }
+        
 }//Fin de la clase HiloCronometro

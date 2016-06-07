@@ -41,12 +41,16 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
         jLabel_FondoPuntajes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jB_Atras.setText("Atrás");
         jB_Atras.setActionCommand("Atras");
+        jB_Atras.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jB_AtrasKeyPressed(evt);
+            }
+        });
         getContentPane().add(jB_Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 590, -1, -1));
 
         jLabel_FondoPuntajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
@@ -54,6 +58,15 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jB_AtrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jB_AtrasKeyPressed
+        
+        if(evt.getKeyCode() == 10) {
+            this.setVisible(false);
+            this.fRM_VentanaInicio.setVisible(true);
+        }
+        
+    }//GEN-LAST:event_jB_AtrasKeyPressed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
