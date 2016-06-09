@@ -24,7 +24,6 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
         fRM_VentanaJuego = new FRM_VentanaJuego();
         fRM_VentanaPuntajes = new FRM_VentanaPuntajes(this);
         fRM_VentanaCreditos = new FRM_VentanaCreditos(this);
-        
         controlador_FRM_VentanaInicio = new Controlador_FRM_VentanaInicio(this, fRM_VentanaJuego, fRM_VentanaPuntajes, fRM_VentanaCreditos);
         
         this.setLocation(200, 10);

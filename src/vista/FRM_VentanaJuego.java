@@ -23,6 +23,11 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     MetodosEnemigo metodosEnemigo;
     MetodosBala metodosBala;
     
+    //Variables de la clase
+    int puntaje = 0;
+    
+    FRM_RegistroJugador fRM_RegistroJugador;
+    
     //Se declaran las variables
     public String estado = "EnELSuelo";
     public String bala = "";
@@ -34,35 +39,19 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         this.setLocation(200, 10);
         
         //Instancias de la clase
-        
-        
         metodosPersonaje = new MetodosPersonaje(this);
         metodosEnemigo = new MetodosEnemigo(this);
         metodosBala = new MetodosBala(this);
-        
-        hilo = new HiloJuego(this, metodosPersonaje, metodosEnemigo, metodosBala);
+        fRM_RegistroJugador = new FRM_RegistroJugador();
+        hilo = new HiloJuego(this, metodosPersonaje, metodosEnemigo, metodosBala, fRM_RegistroJugador);
         hilo.start();
-                        
+        
+        
     }
     
-    /**
-     * Método que posiciona la imagen de fondo en su posición inicial obteniendo
-     * la posición en -y-. Si el valor de la imagen en -y- es menor que -50y lo de
-     * vuvuelve a su ligar inicial.
-     */
-//    public void moverFondo()
-//    {
-//        if(jl_Fondo.getY()<-50)
-//        {
-//            jl_Fondo.setLocation(jl_Fondo.getX(),jl_Fondo.getY()+9);
-//        }
-//        else
-//        {
-//            jl_Fondo.setLocation(jl_Fondo.getX(), -2000);
-//        }
-//    }
-    
-    public void detectarColisionNave() {
+    public boolean detectarColisionNave() {
+        
+        boolean colision = false;
         int xPersonaje = jL_Personaje.getX();
         int yPersonaje = jL_Personaje.getY();
         
@@ -75,8 +64,11 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         
         if(p.intersects(e)) {
             
-            hilo.suspend();
+            colision = true;
+//            hilo.suspend();
+            
         }
+        return colision;
     }//Fin del método detectarColisionNave() 
     
      /*
@@ -95,8 +87,10 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         
         //Condición que evalua si el objeto bala colisionó con el enemigo01
         if(b.intersects(e)) {
-            
-            hilo.suspend();
+            System.out.println("Puntaje: "+puntaje);
+//            hilo.suspend();
+            puntaje+=1;
+            System.out.println("Puntaje: "+puntaje);
             
         }
         
@@ -140,7 +134,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         getContentPane().add(jL_Personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 110, 90));
 
         jL_naveEnemigo01.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nave-personaje.png"))); // NOI18N
-        getContentPane().add(jL_naveEnemigo01, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 110, -1));
+        getContentPane().add(jL_naveEnemigo01, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, -1));
 
         jL_Bala.setForeground(new java.awt.Color(0, 255, 255));
         jL_Bala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bala-plasma.gif"))); // NOI18N

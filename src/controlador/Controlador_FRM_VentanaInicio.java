@@ -50,8 +50,10 @@ public class Controlador_FRM_VentanaInicio implements ActionListener {
         if(e.getActionCommand().equals("Jugar")) {
             this.fRM_VentanaJuego.setVisible(true);
             this.fRM_VentanaInicio.setVisible(false);
-            hiloCronometro = new HiloCronometro(this.fRM_VentanaJuego);
-            hiloCronometro.start();
+            
+//            hiloCronometro = new HiloCronometro(this.fRM_VentanaJuego);
+//            hiloCronometro.start();
+
             /**
              * Cuándo este evento se ejecute el cronometro debe empezar a correr
              */

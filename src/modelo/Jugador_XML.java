@@ -28,7 +28,7 @@ import org.xml.sax.SAXException;
  *  La clase que se utiliza para obtener la informacion. Para este caso se
  * necesita FRM_Jugador y/o Puntajes
  */
-import vista.FRM_VentanaJuego;
+import vista.FRM_RegistroJugador;
 
 /**
  * 
@@ -37,7 +37,7 @@ import vista.FRM_VentanaJuego;
 public class Jugador_XML 
 {
 //    Referencia de la clase
-    FRM_VentanaJuego fRM_VentanaJuego;
+    FRM_RegistroJugador fRM_RegistroJugador;
     
     DocumentBuilderFactory factory;
     DocumentBuilder builder;
@@ -63,12 +63,13 @@ public class Jugador_XML
         
         if(cargarXML())
         {
-//            ventana.mostrarMensaje("Ya existe un archivo XML_Estudiantes creado, ya fue cargado y puede proceder a utilizarlo");
+            System.err.println("Ya existe un archivo creado");
         }
         else
         {
             crearXML();
-//            ventana.mostrarMensaje("No existía un archivo XML_Estudiantes creado, ya fue creado y puede proceder a utilizarlo");
+            System.err.println("Se creó un archivo XML");
+
         }
         
         arregloInformacion=new String[2];
@@ -131,7 +132,7 @@ public class Jugador_XML
             
             Element valor1 = document.createElement("jugador");
             Text text = document.createTextNode(arregloInformacion[0]);
-            Element valor2 = document.createElement("tiempo");
+            Element valor2 = document.createElement("record");
             Text text2 = document.createTextNode(arregloInformacion[1]);
                         
             raiz.appendChild(valor1);

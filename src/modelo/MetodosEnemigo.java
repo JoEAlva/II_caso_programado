@@ -56,8 +56,12 @@ public class MetodosEnemigo {
         }
         //Prueba para el borde exterior
         if(x >= 860) {
+            
+            bajarPosicionPersonaje();
             return false;
         }else if( x <= 0) {
+            
+            bajarPosicionPersonaje();
             return false;
         }
         return true;
@@ -83,5 +87,27 @@ public class MetodosEnemigo {
         this.direccion = direccion;
     }
      
+    /*
+    Método que permite bajar el enemigo cada vez que llega a un extremo de la pantalla
+    */
+    public void bajarPosicionPersonaje() {
+        
+        ventana.jL_naveEnemigo01.setLocation(ventana.jL_naveEnemigo01.getX(), ventana.jL_naveEnemigo01.getY()+40);
+        
+    }
+    
+    /*
+    Método que posiciona el enemigo en su estado inicial después de haber
+    salido de la pantalla
+    */
+    public void estadoInicialEnemigo() {
+        
+        if(ventana.jL_naveEnemigo01.getY() >= 620) {
+            
+            ventana.jL_naveEnemigo01.setLocation(0, 0);
+            
+        }
+        
+    }
     
 }//Fin de la clase MetodosEnemigo

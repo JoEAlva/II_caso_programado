@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import vista.FRM_RegistroJugador;
 import vista.FRM_VentanaCreditos;
 import vista.FRM_VentanaJuego;
 
@@ -16,13 +17,15 @@ public class HiloJuego extends Thread{
     //Referencias de la clase
     FRM_VentanaJuego ventana;
     FRM_VentanaCreditos ventanaCreditos;
+    FRM_RegistroJugador fRM_RegistroJugador;
     MetodosPersonaje metodosPersonaje;
     MetodosEnemigo metodosEnemigo;
     MetodosBala metodosBala;  
     
-   public HiloJuego(FRM_VentanaJuego ventana, MetodosPersonaje mp, MetodosEnemigo me, MetodosBala mb)
+   public HiloJuego(FRM_VentanaJuego ventana, MetodosPersonaje mp, MetodosEnemigo me, MetodosBala mb, FRM_RegistroJugador fRM_RegistroJugador)
    {
-       this.ventana=ventana;
+       this.ventana = ventana;
+       this.fRM_RegistroJugador = fRM_RegistroJugador;
        this.metodosPersonaje = mp;
        this.metodosEnemigo = me;
        this.metodosBala = mb;
@@ -53,13 +56,16 @@ public class HiloJuego extends Thread{
                }else {
                    metodosEnemigo.cambiarDireccion();
                }
+               
+               metodosEnemigo.estadoInicialEnemigo();
 
                //Métodos que comprueban las colisiones entre los objetos
-               ventana.detectarColisionNave();
+               if(ventana.detectarColisionNave()) {
+                   this.fRM_RegistroJugador.setVisible(true);
+                   this.ventana.setVisible(false);
+               }
                ventana.detectarColisionBala();
-                            
-               //Método que mueve la imagen de créditos
-               
+                                          
                
            }
            
@@ -67,7 +73,7 @@ public class HiloJuego extends Thread{
        }
        catch(Exception e)
        {
-           System.out.println("Error en la ejecución: "+e);
+           System.out.println("Error en la ejecución hilo juego: "+e);
        }
    }
    
