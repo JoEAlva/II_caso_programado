@@ -4,6 +4,8 @@
  */
 package vista;
 
+import modelo.HiloCreditos;
+
 /**
  *
  * @author JorgeIgnacio
@@ -12,15 +14,27 @@ public class FRM_VentanaCreditos extends javax.swing.JFrame {
 
     //Referencia de clases
     FRM_VentanaInicio fRM_VentanaInicio;
+    HiloCreditos hiloCreditos;
     
     public FRM_VentanaCreditos(FRM_VentanaInicio fRM_VentanaInicio) {
         initComponents();
         
         //Instancias de clase
         this.fRM_VentanaInicio = fRM_VentanaInicio;
-        
+        hiloCreditos = new HiloCreditos(this);
         this.setLocation(200, 10);
         
+    }
+    
+    public void moverFondo() {
+        if(jL_Creditos.getY()<-250)
+        {
+            jL_Creditos.setLocation(jL_Creditos.getX(),jL_Creditos.getY()-15);
+        }
+        else
+        {
+            jL_Creditos.setLocation(jL_Creditos.getX(), -1000);
+        }
     }
 
     /**
@@ -32,12 +46,18 @@ public class FRM_VentanaCreditos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jL_Creditos = new javax.swing.JLabel();
         jL_VentanaCreditos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
         getContentPane().setLayout(null);
+
+        jL_Creditos.setForeground(new java.awt.Color(0, 255, 255));
+        jL_Creditos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/creditos.png"))); // NOI18N
+        getContentPane().add(jL_Creditos);
+        jL_Creditos.setBounds(0, -300, 980, 2100);
 
         jL_VentanaCreditos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
         jL_VentanaCreditos.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -46,7 +66,7 @@ public class FRM_VentanaCreditos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jL_VentanaCreditos);
-        jL_VentanaCreditos.setBounds(0, 0, 980, 680);
+        jL_VentanaCreditos.setBounds(0, -20, 990, 720);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -61,6 +81,7 @@ public class FRM_VentanaCreditos extends javax.swing.JFrame {
    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JLabel jL_Creditos;
     private javax.swing.JLabel jL_VentanaCreditos;
     // End of variables declaration//GEN-END:variables
 }

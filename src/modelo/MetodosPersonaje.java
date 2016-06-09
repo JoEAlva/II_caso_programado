@@ -112,7 +112,7 @@ public class MetodosPersonaje {
        
        int location = ventana.jL_Personaje.getY(); 
        
-       if(location < 2) {
+       if(location < -5) {
            limiteArriba = true;
        }
        
@@ -148,7 +148,7 @@ public class MetodosPersonaje {
         
         int location = ventana.jL_Personaje.getY();
         
-        if(location > 580) {
+        if(location > 610) {
             limiteAbajo = true;
         }
         return limiteAbajo;   

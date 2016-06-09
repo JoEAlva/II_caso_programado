@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import vista.FRM_VentanaCreditos;
 import vista.FRM_VentanaJuego;
 
 /**
@@ -14,10 +15,10 @@ public class HiloJuego extends Thread{
 
     //Referencias de la clase
     FRM_VentanaJuego ventana;
+    FRM_VentanaCreditos ventanaCreditos;
     MetodosPersonaje metodosPersonaje;
     MetodosEnemigo metodosEnemigo;
-    MetodosBala metodosBala;
-  
+    MetodosBala metodosBala;  
     
    public HiloJuego(FRM_VentanaJuego ventana, MetodosPersonaje mp, MetodosEnemigo me, MetodosBala mb)
    {
@@ -38,18 +39,28 @@ public class HiloJuego extends Thread{
            {
 
                sleep(100);
-//               ventana.moverFondo();
-               metodosPersonaje.moverPersonaje();
-               metodosBala.dispararCañon();
                
+               //Método que sirve para mover el lpersonaje principal entre el escenario
+               metodosPersonaje.moverPersonaje();
+               
+               //Método que sirve para diparar la bala del pesonaje
+               metodosBala.dispararCañon();
+               metodosBala.estadoInicialBala();
+               
+               //Condición que evalua los movimientos del enemigo
                if(metodosEnemigo.puedeMoverse()) {
                    metodosEnemigo.moverse();
                }else {
                    metodosEnemigo.cambiarDireccion();
                }
-//               metodosPersonaje.comprobarColision();
 
-               ventana.detectarColision();
+               //Métodos que comprueban las colisiones entre los objetos
+               ventana.detectarColisionNave();
+               ventana.detectarColisionBala();
+                            
+               //Método que mueve la imagen de créditos
+               
+               
            }
            
            

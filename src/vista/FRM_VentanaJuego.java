@@ -18,14 +18,14 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
 
     //Referencias de clases
     HiloJuego hilo;
-
+    
     MetodosPersonaje metodosPersonaje;
     MetodosEnemigo metodosEnemigo;
     MetodosBala metodosBala;
     
     //Se declaran las variables
     public String estado = "EnELSuelo";
-    public String bala = "cargada";
+    public String bala = "";
     
     //Constructor de la clase
     public FRM_VentanaJuego() {
@@ -34,6 +34,8 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         this.setLocation(200, 10);
         
         //Instancias de la clase
+        
+        
         metodosPersonaje = new MetodosPersonaje(this);
         metodosEnemigo = new MetodosEnemigo(this);
         metodosBala = new MetodosBala(this);
@@ -60,7 +62,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
 //        }
 //    }
     
-    public void detectarColision() {
+    public void detectarColisionNave() {
         int xPersonaje = jL_Personaje.getX();
         int yPersonaje = jL_Personaje.getY();
         
@@ -72,10 +74,34 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         Rectangle e = new Rectangle(xEnemigo, yEnemigo, jL_naveEnemigo01.getWidth(), jL_naveEnemigo01.getHeight());
         
         if(p.intersects(e)) {
-            System.out.println("Surpraise");
+            
             hilo.suspend();
         }
+    }//Fin del método detectarColisionNave() 
+    
+     /*
+    Método que se encarga de comprobar si la bala ha intecptado una nave enemiga
+    */
+    public void detectarColisionBala() {
+        
+        int xBala = jL_Bala.getX();
+        int yBala = jL_Bala.getY();
+        
+        int xEnemigo =jL_naveEnemigo01.getX();
+        int yEnemigo = jL_naveEnemigo01.getY();
+        
+        Rectangle b = new Rectangle(xBala, yBala, jL_Bala.getWidth(), jL_Bala.getHeight());
+        Rectangle e = new Rectangle(xEnemigo, yEnemigo, jL_naveEnemigo01.getWidth(), jL_naveEnemigo01.getHeight());
+        
+        //Condición que evalua si el objeto bala colisionó con el enemigo01
+        if(b.intersects(e)) {
+            
+            hilo.suspend();
+            
+        }
+        
     }
+    
     
     public void agregarTiempo(String tiempo) {
 //        this.jL_Tiempo.setText(tiempo);
@@ -111,17 +137,18 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
 
         jL_Personaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nave-personaje.png"))); // NOI18N
         jL_Personaje.setPreferredSize(new java.awt.Dimension(130, 105));
-        getContentPane().add(jL_Personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 350, 110, 90));
+        getContentPane().add(jL_Personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 110, 90));
 
         jL_naveEnemigo01.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nave-personaje.png"))); // NOI18N
         getContentPane().add(jL_naveEnemigo01, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, 110, -1));
 
         jL_Bala.setForeground(new java.awt.Color(0, 255, 255));
-        jL_Bala.setText("BALA");
-        getContentPane().add(jL_Bala, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 320, -1, -1));
+        jL_Bala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bala-plasma.gif"))); // NOI18N
+        jL_Bala.setPreferredSize(new java.awt.Dimension(30, 30));
+        getContentPane().add(jL_Bala, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 30, 30));
 
         jl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
-        getContentPane().add(jl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 680));
+        getContentPane().add(jl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -138,7 +165,6 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
             
         }
         if(evt.getKeyCode() == 87) {
-            System.out.println("Funciona");
             estado = "arriba";
             
         }
@@ -148,7 +174,6 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         }
         
         if(evt.getKeyCode() == 32) {
-            
             bala = "disparo";
             
         }
@@ -180,7 +205,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         
         if(evt.getKeyCode() == 32) {
             
-            bala = "disparo";
+            bala = "cargada";
             
         }
         

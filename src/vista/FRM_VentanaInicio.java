@@ -60,39 +60,47 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jB_Jugar.setBackground(new java.awt.Color(102, 102, 102));
+        jB_Jugar.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
+        jB_Jugar.setForeground(new java.awt.Color(0, 204, 204));
         jB_Jugar.setText("Jugar");
+        jB_Jugar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 1, true));
         jB_Jugar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jB_JugarKeyPressed(evt);
             }
         });
-        getContentPane().add(jB_Jugar);
-        jB_Jugar.setBounds(510, 180, 120, 26);
+        getContentPane().add(jB_Jugar, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 250, 160, 70));
 
+        jB_Puntajes.setBackground(new java.awt.Color(102, 102, 102));
+        jB_Puntajes.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
+        jB_Puntajes.setForeground(new java.awt.Color(0, 204, 204));
         jB_Puntajes.setText("Puntajes");
+        jB_Puntajes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 1, true));
         jB_Puntajes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jB_PuntajesKeyPressed(evt);
             }
         });
-        getContentPane().add(jB_Puntajes);
-        jB_Puntajes.setBounds(510, 220, 120, 26);
+        getContentPane().add(jB_Puntajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 210, 160, 70));
 
+        jB_Creditos.setBackground(new java.awt.Color(102, 102, 102));
+        jB_Creditos.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
+        jB_Creditos.setForeground(new java.awt.Color(0, 204, 204));
         jB_Creditos.setText("Créditos");
         jB_Creditos.setActionCommand("Creditos");
+        jB_Creditos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
         jB_Creditos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jB_CreditosKeyPressed(evt);
             }
         });
-        getContentPane().add(jB_Creditos);
-        jB_Creditos.setBounds(510, 260, 120, 26);
+        getContentPane().add(jB_Creditos, new org.netbeans.lib.awtextra.AbsoluteConstraints(710, 210, 160, 70));
 
         jLabel_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
-        getContentPane().add(jLabel_Fondo);
-        jLabel_Fondo.setBounds(0, 0, 980, 680);
+        getContentPane().add(jLabel_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 680));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

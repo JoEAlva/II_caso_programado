@@ -41,17 +41,22 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
         jLabel_FondoPuntajes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jB_Atras.setBackground(new java.awt.Color(102, 102, 102));
+        jB_Atras.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
+        jB_Atras.setForeground(new java.awt.Color(0, 204, 204));
         jB_Atras.setText("Atrás");
         jB_Atras.setActionCommand("Atras");
+        jB_Atras.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 1, true));
         jB_Atras.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jB_AtrasKeyPressed(evt);
             }
         });
-        getContentPane().add(jB_Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 590, -1, -1));
+        getContentPane().add(jB_Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 170, 70));
 
         jLabel_FondoPuntajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
         getContentPane().add(jLabel_FondoPuntajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 680));

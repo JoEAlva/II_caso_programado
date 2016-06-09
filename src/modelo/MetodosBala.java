@@ -4,6 +4,7 @@
  */
 package modelo;
 
+import java.awt.Rectangle;
 import vista.FRM_VentanaJuego;
 
 /**
@@ -17,6 +18,7 @@ public class MetodosBala {
     
     //Variables de la clase
     int velocidad = 30;
+    String estadoBala = "";
     
     //Constructor de la clase
     public MetodosBala(FRM_VentanaJuego ventana) {
@@ -93,7 +95,7 @@ public class MetodosBala {
         int location = ventana.jL_Bala.getX();
         //System.out.println("Location" + location);
         
-        if(location < -10) {
+        if(location < 35) {
             limiteIzq = true;
         }
         
@@ -111,7 +113,7 @@ public class MetodosBala {
        
        int location = ventana.jL_Bala.getY(); 
        
-       if(location < 2) {
+       if(location < -10) {
            limiteArriba = true;
        }
        
@@ -129,7 +131,7 @@ public class MetodosBala {
         
         int location = ventana.jL_Bala.getX();
         
-        if(location > 850) {
+        if(location > 900) {
             limiteDer = true;
         }
        
@@ -159,26 +161,47 @@ public class MetodosBala {
     public void dispararCañon() {
         
         if(ventana.bala.equals("disparo")) {
-            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() - velocidad );
+            if(continuarMovBala()) {
+                ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() - velocidad );
+            }
             
-        }else {
-            
+        }else{
             moverBala();
-            
         }
         
     }//Fin del método dispararCañon
     
+    public boolean continuarMovBala() {
+        
+        boolean posBala = false;
+        int posicionBala = ventana.jL_Bala.getY();
+        
+        if(posicionBala >= -15) {
+            posBala = true;
+        }
+        
+        return posBala;
+    }
+    
     public boolean verificarPosicionBala() {
         
         boolean fueraDeVentana = false;
-        int posicion = ventana.jL_Bala.getY();
+        int posicionBala = ventana.jL_Bala.getY();
         
-        if(posicion > 0) {
+        if(posicionBala <= -15) {
             fueraDeVentana = true;
         }
         
         return fueraDeVentana;
+    }
+    
+    public void estadoInicialBala() {
+        if(verificarPosicionBala()) {
+            if(ventana.bala.equals("cargada")) {
+                ventana.jL_Bala.setLocation(ventana.jL_Personaje.getX()+40, ventana.jL_Personaje.getY()-30);
+            }
+        }
+       
     }
         
 }// Fin de la clase MetodosBala
