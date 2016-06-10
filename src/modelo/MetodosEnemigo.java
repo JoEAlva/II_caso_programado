@@ -92,7 +92,7 @@ public class MetodosEnemigo {
     */
     public void bajarPosicionPersonaje() {
         
-        ventana.jL_naveEnemigo01.setLocation(ventana.jL_naveEnemigo01.getX(), ventana.jL_naveEnemigo01.getY()+40);
+        ventana.jL_naveEnemigo01.setLocation(ventana.jL_naveEnemigo01.getX(), ventana.jL_naveEnemigo01.getY()+80);
         
     }
     
@@ -108,6 +108,29 @@ public class MetodosEnemigo {
             
         }
         
+    }
+    
+    public void estadoInicial_01() {
+            ventana.jL_naveEnemigo01.setLocation(0, 0);
+    }
+    public void estadoInicial_02() {
+            ventana.jL_naveEnemigo01.setLocation(0, 600);
+    }
+    
+    /*
+    Método que verifica si lanave enemigo ha ll
+    */
+    public boolean comprobarEnemigo() {
+        
+        boolean salio = false;
+        
+        if(ventana.jL_naveEnemigo01.getY() >= 620) {
+            
+            salio = true;
+            
+        }
+        
+        return salio;
     }
     
 }//Fin de la clase MetodosEnemigo

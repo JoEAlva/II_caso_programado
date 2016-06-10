@@ -7,7 +7,7 @@ package controlador;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import modelo.HiloCreditos;
-import modelo.HiloCronometro;
+import modelo.HiloPuntaje;
 import modelo.Sonido;
 import vista.FRM_VentanaCreditos;
 import vista.FRM_VentanaInicio;
@@ -29,7 +29,7 @@ public class Controlador_FRM_VentanaInicio implements ActionListener {
     
     Sonido s;
     
-    HiloCronometro hiloCronometro;
+    HiloPuntaje hiloPuntaje;
     HiloCreditos hiloCreditos;
     
     //Contructor de la clase
@@ -42,7 +42,7 @@ public class Controlador_FRM_VentanaInicio implements ActionListener {
         
         s = new Sonido();
         
-        s.musicaInicio();
+//        s.musicaInicio();
     }
     
     public void actionPerformed (ActionEvent e) {
@@ -51,14 +51,16 @@ public class Controlador_FRM_VentanaInicio implements ActionListener {
             this.fRM_VentanaJuego.setVisible(true);
             this.fRM_VentanaInicio.setVisible(false);
             
-//            hiloCronometro = new HiloCronometro(this.fRM_VentanaJuego);
-//            hiloCronometro.start();
+            hiloPuntaje = new HiloPuntaje(this.fRM_VentanaJuego);
+            hiloPuntaje.start();
+            
+            this.fRM_VentanaJuego.agregarTiempo(hiloPuntaje.obtenerTiempo());
 
             /**
              * Cuándo este evento se ejecute el cronometro debe empezar a correr
              */
-            s.detenerMusica();
-            s.musicaJuego();
+//            s.detenerMusica();
+//            s.musicaJuego();
                     
         }
         
@@ -85,8 +87,8 @@ public class Controlador_FRM_VentanaInicio implements ActionListener {
         
         this.fRM_VentanaJuego.setVisible(true);
         this.fRM_VentanaInicio.setVisible(false);
-        hiloCronometro = new HiloCronometro(this.fRM_VentanaJuego);
-        hiloCronometro.start();
+        hiloPuntaje = new HiloPuntaje(this.fRM_VentanaJuego);
+        hiloPuntaje.start();
         
     }
     

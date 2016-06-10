@@ -17,7 +17,7 @@ public class MetodosBala {
     FRM_VentanaJuego ventana;
     
     //Variables de la clase
-    int velocidad = 30;
+    int velocidad = 60;
     String estadoBala = "";
     
     //Constructor de la clase
@@ -68,18 +68,18 @@ public class MetodosBala {
             ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY());
         }
         
-        //Si el jugadorpresionó la flecha abajo
-        if(ventana.estado.equals("abajo")) {
-            
-            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() + velocidad);
-            
-            if(comprobarAbajo()) {
-                ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() - velocidad);
-            }
-            //Si el jugador soltó la tecla 
-        }else if(ventana.estado.equals("EnElSuelo")) {
-            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY());
-        }
+//        //Si el jugadorpresionó la flecha abajo
+//        if(ventana.estado.equals("abajo")) {
+//            
+//            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() + velocidad);
+//            
+//            if(comprobarAbajo()) {
+//                ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY() - velocidad);
+//            }
+//            //Si el jugador soltó la tecla 
+//        }else if(ventana.estado.equals("EnElSuelo")) {
+//            ventana.jL_Bala.setLocation(ventana.jL_Bala.getX(), ventana.jL_Bala.getY());
+//        }
         
     }//Fin del método moverPersonaje
     
@@ -138,22 +138,22 @@ public class MetodosBala {
         return limiteDer;
     }
     
-    /**
-     * Método que verifica si el personaje se encuentra en -y- posición en la 
-     * pantalla.
-     * @return limiteIzq se convierte en -true- si se cumple la condición. 
-     */
-    public boolean comprobarAbajo() {
-        
-        boolean limiteAbajo = false;
-        
-        int location = ventana.jL_Bala.getY();
-        
-        if(location > 580) {
-            limiteAbajo = true;
-        }
-        return limiteAbajo;   
-    }
+//    /**
+//     * Método que verifica si el personaje se encuentra en -y- posición en la 
+//     * pantalla.
+//     * @return limiteIzq se convierte en -true- si se cumple la condición. 
+//     */
+//    public boolean comprobarAbajo() {
+//        
+//        boolean limiteAbajo = false;
+//        
+//        int location = ventana.jL_Bala.getY();
+//        
+//        if(location > 580) {
+//            limiteAbajo = true;
+//        }
+//        return limiteAbajo;   
+//    }
     
     /*
     Método que hace moverse la bala en línea recta
@@ -190,6 +190,7 @@ public class MetodosBala {
         
         if(posicionBala <= -15) {
             fueraDeVentana = true;
+            ventana.bala="cargada";            
         }
         
         return fueraDeVentana;

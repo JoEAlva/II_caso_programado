@@ -60,10 +60,11 @@ public class HiloJuego extends Thread{
                metodosEnemigo.estadoInicialEnemigo();
 
                //Métodos que comprueban las colisiones entre los objetos
-               if(ventana.detectarColisionNave()) {
+               if(ventana.detectarColisionNave() || metodosEnemigo.comprobarEnemigo()) {
                    this.fRM_RegistroJugador.setVisible(true);
                    this.ventana.setVisible(false);
                }
+               
                ventana.detectarColisionBala();
                                           
                

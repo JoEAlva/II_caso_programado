@@ -15,7 +15,7 @@ public class MetodosPersonaje {
     FRM_VentanaJuego ventana;
     
     //Variables de la clase
-    int velocidad = 30;
+    int velocidad = 60;
     
     //Constructor de la clase
     public MetodosPersonaje(FRM_VentanaJuego ventana) {
@@ -41,18 +41,18 @@ public class MetodosPersonaje {
             ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
         }
         
-        //Si el jugador presionó la flecha arriba
-        if(ventana.estado.equals("arriba")) {
-            
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() - velocidad);
-            
-            if(comprobarArriba()) {
-                ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() + velocidad);
-            }
-            //Si el jugador soltó la tecla flecha arriba
-        }else if(ventana.estado.equals("EnElSuelo")) {
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
-        }
+//        //Si el jugador presionó la flecha arriba
+//        if(ventana.estado.equals("arriba")) {
+//            
+//            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() - velocidad);
+//            
+//            if(comprobarArriba()) {
+//                ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() + velocidad);
+//            }
+//            //Si el jugador soltó la tecla flecha arriba
+//        }else if(ventana.estado.equals("EnElSuelo")) {
+//            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
+//        }
 
         //Si el jugador presionó la flecha derecha
         if(ventana.estado.equals("derecha")) {
@@ -67,18 +67,18 @@ public class MetodosPersonaje {
             ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
         }
         
-        //Si el jugadorpresionó la flecha abajo
-        if(ventana.estado.equals("abajo")) {
-            
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() + velocidad);
-            
-            if(comprobarAbajo()) {
-                ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() - velocidad);
-            }
-            //Si el jugador soltó la tecla 
-        }else if(ventana.estado.equals("EnElSuelo")) {
-            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
-        }
+//        //Si el jugadorpresionó la flecha abajo
+//        if(ventana.estado.equals("abajo")) {
+//            
+//            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() + velocidad);
+//            
+//            if(comprobarAbajo()) {
+//                ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY() - velocidad);
+//            }
+//            //Si el jugador soltó la tecla 
+//        }else if(ventana.estado.equals("EnElSuelo")) {
+//            ventana.jL_Personaje.setLocation(ventana.jL_Personaje.getX(), ventana.jL_Personaje.getY());
+//        }
         
     }//Fin del método moverPersonaje
     

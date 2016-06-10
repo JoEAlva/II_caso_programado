@@ -36,6 +36,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     public FRM_VentanaJuego() {
         initComponents();
         
+        this.setSize(980, 680);
         this.setLocation(200, 10);
         
         //Instancias de la clase
@@ -45,6 +46,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         fRM_RegistroJugador = new FRM_RegistroJugador();
         hilo = new HiloJuego(this, metodosPersonaje, metodosEnemigo, metodosBala, fRM_RegistroJugador);
         hilo.start();
+        
         
         
     }
@@ -87,18 +89,15 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         
         //Condición que evalua si el objeto bala colisionó con el enemigo01
         if(b.intersects(e)) {
-            System.out.println("Puntaje: "+puntaje);
-//            hilo.suspend();
-            puntaje+=1;
-            System.out.println("Puntaje: "+puntaje);
+            metodosEnemigo.estadoInicial_01();
             
         }
         
     }
     
     
-    public void agregarTiempo(String tiempo) {
-//        this.jL_Tiempo.setText(tiempo);
+    public void agregarTiempo(String puntaje) {
+        this.jL_Tiempo.setText(puntaje);
     }
     
     
@@ -113,6 +112,8 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     private void initComponents() {
 
         jL_Personaje = new javax.swing.JLabel();
+        jL_Tiempo = new javax.swing.JLabel();
+        jL_Puntaje = new javax.swing.JLabel();
         jL_naveEnemigo01 = new javax.swing.JLabel();
         jL_Bala = new javax.swing.JLabel();
         jl_Fondo = new javax.swing.JLabel();
@@ -127,22 +128,42 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
                 formKeyReleased(evt);
             }
         });
-        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().setLayout(null);
 
         jL_Personaje.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nave-personaje.png"))); // NOI18N
         jL_Personaje.setPreferredSize(new java.awt.Dimension(130, 105));
-        getContentPane().add(jL_Personaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 360, 110, 90));
+        getContentPane().add(jL_Personaje);
+        jL_Personaje.setBounds(450, 560, 110, 90);
+
+        jL_Tiempo.setBackground(new java.awt.Color(153, 153, 153));
+        jL_Tiempo.setFont(new java.awt.Font("Impact", 2, 14)); // NOI18N
+        jL_Tiempo.setForeground(new java.awt.Color(0, 255, 255));
+        jL_Tiempo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jL_Tiempo.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null, null));
+        jL_Tiempo.setOpaque(true);
+        getContentPane().add(jL_Tiempo);
+        jL_Tiempo.setBounds(840, 30, 100, 40);
+
+        jL_Puntaje.setBackground(new java.awt.Color(153, 153, 153));
+        jL_Puntaje.setForeground(new java.awt.Color(204, 204, 0));
+        jL_Puntaje.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), null, null));
+        jL_Puntaje.setOpaque(true);
+        getContentPane().add(jL_Puntaje);
+        jL_Puntaje.setBounds(840, 100, 100, 50);
 
         jL_naveEnemigo01.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/nave-personaje.png"))); // NOI18N
-        getContentPane().add(jL_naveEnemigo01, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 110, -1));
+        getContentPane().add(jL_naveEnemigo01);
+        jL_naveEnemigo01.setBounds(0, 0, 110, 80);
 
         jL_Bala.setForeground(new java.awt.Color(0, 255, 255));
         jL_Bala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bala-plasma.gif"))); // NOI18N
         jL_Bala.setPreferredSize(new java.awt.Dimension(30, 30));
-        getContentPane().add(jL_Bala, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 330, 30, 30));
+        getContentPane().add(jL_Bala);
+        jL_Bala.setBounds(490, 530, 30, 30);
 
         jl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
-        getContentPane().add(jl_Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 680));
+        getContentPane().add(jl_Fondo);
+        jl_Fondo.setBounds(0, 0, 980, 680);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -158,14 +179,14 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
             estado = "derecha";
             
         }
-        if(evt.getKeyCode() == 87) {
-            estado = "arriba";
-            
-        }
-        if(evt.getKeyCode() == 83) {
-            estado = "abajo";
-            
-        }
+//        if(evt.getKeyCode() == 87) {
+//            estado = "arriba";
+//            
+//        }
+//        if(evt.getKeyCode() == 83) {
+//            estado = "abajo";
+//            
+//        }
         
         if(evt.getKeyCode() == 32) {
             bala = "disparo";
@@ -175,31 +196,14 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     }//GEN-LAST:event_formKeyPressed
 
     private void formKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_formKeyReleased
-
+        
         if(evt.getKeyCode() == 65 ) {
-            
-            estado = "EnElSuelo";
-            
-        }
-        if(evt.getKeyCode() == 68) {
-            
-            estado = "EnElSuelo";
-            
-        }
-        if(evt.getKeyCode() == 87) {
-            
-            estado = "EnElSuelo";
-            
-        }
-        if(evt.getKeyCode() == 83) {
-            
+
             estado = "EnELSuelo";
             
         }
-        
-        if(evt.getKeyCode() == 32) {
-            
-            bala = "cargada";
+        if(evt.getKeyCode() == 68) {
+            estado = "EnELSuelo";
             
         }
         
@@ -209,6 +213,8 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JLabel jL_Bala;
     public javax.swing.JLabel jL_Personaje;
+    private javax.swing.JLabel jL_Puntaje;
+    private javax.swing.JLabel jL_Tiempo;
     public javax.swing.JLabel jL_naveEnemigo01;
     private javax.swing.JLabel jl_Fondo;
     // End of variables declaration//GEN-END:variables
