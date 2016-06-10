@@ -199,7 +199,7 @@ public class MetodosBala {
     public void estadoInicialBala() {
         if(verificarPosicionBala()) {
             if(ventana.bala.equals("cargada")) {
-                ventana.jL_Bala.setLocation(ventana.jL_Personaje.getX()+40, ventana.jL_Personaje.getY()-30);
+                ventana.jL_Bala.setLocation(ventana.jL_Personaje.getX()+40, ventana.jL_Personaje.getY()+30);
             }
         }
        

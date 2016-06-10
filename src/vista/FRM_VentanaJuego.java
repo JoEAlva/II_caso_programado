@@ -159,7 +159,7 @@ public class FRM_VentanaJuego extends javax.swing.JFrame {
         jL_Bala.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/bala-plasma.gif"))); // NOI18N
         jL_Bala.setPreferredSize(new java.awt.Dimension(30, 30));
         getContentPane().add(jL_Bala);
-        jL_Bala.setBounds(490, 530, 30, 30);
+        jL_Bala.setBounds(490, 590, 30, 30);
 
         jl_Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
         getContentPane().add(jl_Fondo);
