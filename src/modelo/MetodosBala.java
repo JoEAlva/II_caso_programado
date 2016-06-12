@@ -131,7 +131,7 @@ public class MetodosBala {
         
         int location = ventana.jL_Bala.getX();
         
-        if(location > 900) {
+        if(location >= 960) {
             limiteDer = true;
         }
        

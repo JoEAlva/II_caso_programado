@@ -10,16 +10,16 @@ import vista.FRM_VentanaJuego;
  *
  * @author JorgeIgnacio
  */
-public class HiloPuntaje extends Thread {
+public class HiloTiempo extends Thread {
 
     //Variables de la clase
-    private int puntaje = 0;
+    public int tiempo = 0;
     
     //Referencias de clase
     FRM_VentanaJuego fRM_VentanaJuego;
     
     //Constructor de la clase
-    public HiloPuntaje(FRM_VentanaJuego fRM_VentanaJuego) {
+    public HiloTiempo(FRM_VentanaJuego fRM_VentanaJuego) {
         
         this.fRM_VentanaJuego = fRM_VentanaJuego;
         
@@ -51,20 +51,26 @@ public class HiloPuntaje extends Thread {
     public void tiempo() {
         
         while(true) {
-            puntaje = puntaje + 1;
-            this.fRM_VentanaJuego.agregarTiempo(obtenerTiempo());
+            
             try {
                 sleep(1000);
             } catch (Exception e) {
                 
             }
+            tiempo = tiempo + 1;
+            this.fRM_VentanaJuego.agregarTiempo(obtenerTiempo());
         }
         
     }
 
     //Getter
     public String obtenerTiempo() {
-        return ""+puntaje;
+        return ""+tiempo;
     }
+    
+    public void resetearTiempo() {
+         this.tiempo = 0;
+    }
+   
         
-}//Fin de la clase HiloPuntaje
+}//Fin de la clase HiloTiempo

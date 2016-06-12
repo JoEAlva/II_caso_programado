@@ -9,7 +9,7 @@ import vista.FRM_VentanaJuego;
  *
  * @author JorgeIgnacio
  */
-public class MetodosEnemigo {
+public class MetodosEnemigo02 {
 
     //Referencias de la clase
     FRM_VentanaJuego ventana;
@@ -22,9 +22,9 @@ public class MetodosEnemigo {
     private int direccion;
     
     //Contructor de la clase
-    public MetodosEnemigo(FRM_VentanaJuego ventana) {
+    public MetodosEnemigo02(FRM_VentanaJuego ventana) {
         this.ventana = ventana;
-        setDireccion(OESTE);
+        setDireccion(ESTE);
     }
         
     public void moverse() {
@@ -33,10 +33,10 @@ public class MetodosEnemigo {
         }
         switch(direccion) {
             case ESTE:
-                ventana.jL_naveEnemigo01.setLocation(ventana.jL_naveEnemigo01.getX() + velocidad, ventana.jL_naveEnemigo01.getY());                
+                ventana.jL_naveEnemigo02.setLocation(ventana.jL_naveEnemigo02.getX() + velocidad, ventana.jL_naveEnemigo02.getY());                
                 break;
             case OESTE:
-                ventana.jL_naveEnemigo01.setLocation(ventana.jL_naveEnemigo01.getX() - velocidad, ventana.jL_naveEnemigo01.getY());
+                ventana.jL_naveEnemigo02.setLocation(ventana.jL_naveEnemigo02.getX() - velocidad, ventana.jL_naveEnemigo02.getY());
                 break;
         }
         
@@ -44,7 +44,7 @@ public class MetodosEnemigo {
     
     public boolean puedeMoverse() {
         
-        int x = ventana.jL_naveEnemigo01.getX();
+        int x = ventana.jL_naveEnemigo02.getX();
         switch(direccion) {
             case ESTE:
                 x++;
@@ -92,7 +92,7 @@ public class MetodosEnemigo {
     */
     public void bajarPosicionPersonaje() {
         
-        ventana.jL_naveEnemigo01.setLocation(ventana.jL_naveEnemigo01.getX(), ventana.jL_naveEnemigo01.getY()+80);
+        ventana.jL_naveEnemigo02.setLocation(ventana.jL_naveEnemigo02.getX(), ventana.jL_naveEnemigo02.getY()+80);
         
     }
     
@@ -102,19 +102,19 @@ public class MetodosEnemigo {
     */
     public void estadoInicialEnemigo() {
         
-        if(ventana.jL_naveEnemigo01.getY() >= 620) {
+        if(ventana.jL_naveEnemigo02.getY() >= 620) {
             
-            ventana.jL_naveEnemigo01.setLocation(0, 0);
+            ventana.jL_naveEnemigo02.setLocation(0, 0);
             
         }
         
     }
     
     public void estadoInicial_01() {
-            ventana.jL_naveEnemigo01.setLocation(0, 0);
+            ventana.jL_naveEnemigo02.setLocation(0, 0);
     }
     public void estadoInicial_02() {
-            ventana.jL_naveEnemigo01.setLocation(0, 600);
+            ventana.jL_naveEnemigo02.setLocation(860, 0);
     }
     
     /*
@@ -124,7 +124,7 @@ public class MetodosEnemigo {
         
         boolean salio = false;
         
-        if(ventana.jL_naveEnemigo01.getY() >= 620) {
+        if(ventana.jL_naveEnemigo02.getY() >= 620) {
             
             salio = true;
             
@@ -133,4 +133,4 @@ public class MetodosEnemigo {
         return salio;
     }
     
-}//Fin de la clase MetodosEnemigo
+}//Fin de la clase MetodosEnemigo01

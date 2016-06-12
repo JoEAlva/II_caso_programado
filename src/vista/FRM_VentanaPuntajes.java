@@ -4,8 +4,8 @@
  */
 package vista;
 
-import controlador.Controlador_FRM_VentanaPuntajes;
-
+import controlador.Controlador_FRM_VentanaInicio;
+//import modelo.Jugador_XML;
 /**
  *
  * @author JorgeIgnacio
@@ -13,19 +13,20 @@ import controlador.Controlador_FRM_VentanaPuntajes;
 public class FRM_VentanaPuntajes extends javax.swing.JFrame {
 
     //Referencias de clase
-    Controlador_FRM_VentanaPuntajes controlador_FRM_VentanaPuntajes;
+//    Jugador_XML jugador_XML;
     FRM_VentanaInicio fRM_VentanaInicio;
     
     //Constructor de la clase
-    public FRM_VentanaPuntajes(FRM_VentanaInicio fRM_VentanaInicio) {
+    public FRM_VentanaPuntajes(/*Jugador_XML jugador_XML*/) {
         initComponents();
-        this.fRM_VentanaInicio = fRM_VentanaInicio;
-        controlador_FRM_VentanaPuntajes = new Controlador_FRM_VentanaPuntajes(this, fRM_VentanaInicio);
-        
-        this.jB_Atras.addActionListener(controlador_FRM_VentanaPuntajes);
         
         this.setLocation(200, 10);
-                
+//        this.jugador_XML = jugador_XML;
+        
+    }
+    
+    public void mostrarPuntaje() {
+        
     }
 
     /**
@@ -38,25 +39,39 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
     private void initComponents() {
 
         jB_Atras = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
         jLabel_FondoPuntajes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jB_Atras.setBackground(new java.awt.Color(102, 102, 102));
         jB_Atras.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
-        jB_Atras.setForeground(new java.awt.Color(0, 204, 204));
+        jB_Atras.setForeground(new java.awt.Color(204, 204, 204));
         jB_Atras.setText("Atrás");
         jB_Atras.setActionCommand("Atras");
-        jB_Atras.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 1, true));
-        jB_Atras.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jB_AtrasKeyPressed(evt);
-            }
-        });
+        jB_Atras.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), new java.awt.Color(255, 0, 255), new java.awt.Color(255, 0, 255)));
         getContentPane().add(jB_Atras, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 170, 70));
+
+        jLabel1.setFont(new java.awt.Font("Impact", 2, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 255, 255));
+        jLabel1.setText("NOMBRE");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 170, 50));
+
+        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
+        jTextField1.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
+        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 340, 50));
+
+        jTextField2.setEditable(false);
+        jTextField2.setBackground(new java.awt.Color(102, 102, 102));
+        jTextField2.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
+        jTextField2.setForeground(new java.awt.Color(204, 204, 204));
+        jTextField2.setOpaque(false);
+        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 160, 120));
 
         jLabel_FondoPuntajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
         getContentPane().add(jLabel_FondoPuntajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 680));
@@ -64,18 +79,12 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jB_AtrasKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jB_AtrasKeyPressed
-        
-        if(evt.getKeyCode() == 10) {
-            this.setVisible(false);
-            this.fRM_VentanaInicio.setVisible(true);
-        }
-        
-    }//GEN-LAST:event_jB_AtrasKeyPressed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jB_Atras;
+    public javax.swing.JButton jB_Atras;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_FondoPuntajes;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

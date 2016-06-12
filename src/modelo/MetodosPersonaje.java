@@ -94,7 +94,7 @@ public class MetodosPersonaje {
         int location = ventana.jL_Personaje.getX();
         //System.out.println("Location" + location);
         
-        if(location < -10) {
+        if(location <= -30) {
             limiteIzq = true;
         }
         
@@ -106,18 +106,18 @@ public class MetodosPersonaje {
      * pantalla.
      * @return limiteArriba se convierte en -true- si se cumple la condición. 
      */
-    public boolean comprobarArriba() {
-        
-       boolean limiteArriba = false;
-       
-       int location = ventana.jL_Personaje.getY(); 
-       
-       if(location < -5) {
-           limiteArriba = true;
-       }
-       
-       return limiteArriba;
-    }
+//    public boolean comprobarArriba() {
+//        
+//       boolean limiteArriba = false;
+//       
+//       int location = ventana.jL_Personaje.getY(); 
+//       
+//       if(location < -5) {
+//           limiteArriba = true;
+//       }
+//       
+//       return limiteArriba;
+//    }
         
     /**
      * Método que verifica si el personaje se encuentra en -x- posición en la 
@@ -130,7 +130,7 @@ public class MetodosPersonaje {
         
         int location = ventana.jL_Personaje.getX();
         
-        if(location > 850) {
+        if(location > 860) {
             limiteDer = true;
         }
        
@@ -142,17 +142,17 @@ public class MetodosPersonaje {
      * pantalla.
      * @return limiteIzq se convierte en -true- si se cumple la condición. 
      */
-    public boolean comprobarAbajo() {
-        
-        boolean limiteAbajo = false;
-        
-        int location = ventana.jL_Personaje.getY();
-        
-        if(location > 610) {
-            limiteAbajo = true;
-        }
-        return limiteAbajo;   
-    }  
+//    public boolean comprobarAbajo() {
+//        
+//        boolean limiteAbajo = false;
+//        
+//        int location = ventana.jL_Personaje.getY();
+//        
+//        if(location > 610) {
+//            limiteAbajo = true;
+//        }
+//        return limiteAbajo;   
+//    }  
 
     
 }//Fin de la clase MetodosPersonaje

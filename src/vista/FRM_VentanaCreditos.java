@@ -23,17 +23,18 @@ public class FRM_VentanaCreditos extends javax.swing.JFrame {
         this.fRM_VentanaInicio = fRM_VentanaInicio;
         hiloCreditos = new HiloCreditos(this);
         this.setLocation(200, 10);
+        this.setSize(980, 680);
         
     }
     
     public void moverFondo() {
-        if(jL_Creditos.getY()<-250)
+        if(jL_Creditos.getY()<-980)
         {
-            jL_Creditos.setLocation(jL_Creditos.getX(),jL_Creditos.getY()-15);
+            jL_Creditos.setLocation(jL_Creditos.getX(),jL_Creditos.getY()-10);
         }
         else
         {
-            jL_Creditos.setLocation(jL_Creditos.getX(), -1000);
+            jL_Creditos.setLocation(jL_Creditos.getX(), -1200);
         }
     }
 
@@ -50,14 +51,13 @@ public class FRM_VentanaCreditos extends javax.swing.JFrame {
         jL_VentanaCreditos = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
         getContentPane().setLayout(null);
 
         jL_Creditos.setForeground(new java.awt.Color(0, 255, 255));
         jL_Creditos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/creditos.png"))); // NOI18N
         getContentPane().add(jL_Creditos);
-        jL_Creditos.setBounds(0, -300, 980, 2100);
+        jL_Creditos.setBounds(0, 0, 980, 1350);
 
         jL_VentanaCreditos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
         jL_VentanaCreditos.addMouseListener(new java.awt.event.MouseAdapter() {

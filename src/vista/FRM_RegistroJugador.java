@@ -4,7 +4,8 @@
  */
 package vista;
 
-import controlador.Controlador_FRM_RegistroJugador;
+import javax.swing.JOptionPane;
+import vista.FRM_VentanaInicio;
 
 /**
  *
@@ -13,17 +14,13 @@ import controlador.Controlador_FRM_RegistroJugador;
 public class FRM_RegistroJugador extends javax.swing.JFrame {
 
     //Referencias de clases
-    Controlador_FRM_RegistroJugador cfrmrj;
+    FRM_VentanaInicio fRM_VentanaInicio;
     
     public FRM_RegistroJugador() {
         initComponents();
         
         this.setLocation(200, 10);
-              
-        //Instancias de clases
-        cfrmrj = new Controlador_FRM_RegistroJugador(this);
-        this.jB_GuardarRegistroJugador.addActionListener(cfrmrj);
-        
+    
     }
     
     public String[] extraerDatos() {
@@ -41,6 +38,18 @@ public class FRM_RegistroJugador extends javax.swing.JFrame {
         this.jT_NombreRegistroJugador.setText("");
         this.jT_RecordRegistroJugador.setText("");
         
+    }
+    
+    public void agregarPuntaje(String puntaje) {
+        this.jT_RecordRegistroJugador.setText(puntaje);
+    }
+    
+    public String getNombre() {
+        return this.jT_NombreRegistroJugador.getText();
+    }
+    
+    public void msjJugador() {
+        JOptionPane.showInputDialog(null, "Debería escribir un nombre de jugador", "Registro Jugador",JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -60,54 +69,54 @@ public class FRM_RegistroJugador extends javax.swing.JFrame {
         jL_FondoRegistroJugador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
-        getContentPane().setLayout(null);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Impact", 2, 48)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 255, 255));
         jLabel1.setText("NOMBRE");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 230, 170, 70);
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 230, 170, 70));
 
         jB_GuardarRegistroJugador.setBackground(new java.awt.Color(102, 102, 102));
         jB_GuardarRegistroJugador.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
-        jB_GuardarRegistroJugador.setForeground(new java.awt.Color(0, 204, 204));
+        jB_GuardarRegistroJugador.setForeground(new java.awt.Color(204, 204, 204));
         jB_GuardarRegistroJugador.setText("GUARDAR");
-        jB_GuardarRegistroJugador.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 1, true));
-        getContentPane().add(jB_GuardarRegistroJugador);
-        jB_GuardarRegistroJugador.setBounds(750, 560, 160, 70);
+        jB_GuardarRegistroJugador.setActionCommand("Guardar");
+        jB_GuardarRegistroJugador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), new java.awt.Color(255, 0, 255), new java.awt.Color(255, 0, 255)));
+        getContentPane().add(jB_GuardarRegistroJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 560, 160, 70));
 
         jLabel2.setFont(new java.awt.Font("Impact", 2, 48)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 255, 255));
         jLabel2.setText("RECORD");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(600, 240, 160, 50);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 240, 160, 50));
 
+        jT_NombreRegistroJugador.setBackground(new java.awt.Color(102, 102, 102));
         jT_NombreRegistroJugador.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
-        jT_NombreRegistroJugador.setForeground(new java.awt.Color(0, 255, 255));
-        getContentPane().add(jT_NombreRegistroJugador);
-        jT_NombreRegistroJugador.setBounds(230, 240, 340, 50);
+        jT_NombreRegistroJugador.setForeground(new java.awt.Color(204, 204, 204));
+        jT_NombreRegistroJugador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_NombreRegistroJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 240, 340, 50));
 
-        jT_RecordRegistroJugador.setFont(new java.awt.Font("Impact", 2, 48)); // NOI18N
-        jT_RecordRegistroJugador.setForeground(new java.awt.Color(0, 255, 255));
-        getContentPane().add(jT_RecordRegistroJugador);
-        jT_RecordRegistroJugador.setBounds(790, 240, 150, 50);
+        jT_RecordRegistroJugador.setBackground(new java.awt.Color(102, 102, 102));
+        jT_RecordRegistroJugador.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
+        jT_RecordRegistroJugador.setForeground(new java.awt.Color(204, 204, 204));
+        jT_RecordRegistroJugador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_RecordRegistroJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 240, 150, 50));
 
         jL_FondoRegistroJugador.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
-        getContentPane().add(jL_FondoRegistroJugador);
-        jL_FondoRegistroJugador.setBounds(0, 0, 980, 680);
+        getContentPane().add(jL_FondoRegistroJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jB_GuardarRegistroJugador;
+    public javax.swing.JButton jB_GuardarRegistroJugador;
     private javax.swing.JLabel jL_FondoRegistroJugador;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JTextField jT_NombreRegistroJugador;
     private javax.swing.JTextField jT_RecordRegistroJugador;
     // End of variables declaration//GEN-END:variables
+
+    
 }

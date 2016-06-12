@@ -5,6 +5,8 @@
 package vista;
 
 import controlador.Controlador_FRM_VentanaInicio;
+import vista.FRM_RegistroJugador;
+//import modelo.Jugador_XML;
 /**
  *
  * @author JorgeIgnacio
@@ -16,21 +18,35 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
     FRM_VentanaJuego fRM_VentanaJuego;
     FRM_VentanaPuntajes fRM_VentanaPuntajes;
     FRM_VentanaCreditos fRM_VentanaCreditos;
+    FRM_RegistroJugador fRM_RegistroJugador;
+//    Jugador_XML jugador_XML;
     
     public FRM_VentanaInicio() {
         initComponents();
         
         //Instancias de clase
-        fRM_VentanaJuego = new FRM_VentanaJuego();
-        fRM_VentanaPuntajes = new FRM_VentanaPuntajes(this);
+//        jugador_XML = new Jugador_XML();
+        fRM_RegistroJugador = new FRM_RegistroJugador();
+        fRM_VentanaJuego = new FRM_VentanaJuego(this, fRM_RegistroJugador);
+        fRM_VentanaPuntajes = new FRM_VentanaPuntajes(/*jugador_XML*/);
         fRM_VentanaCreditos = new FRM_VentanaCreditos(this);
-        controlador_FRM_VentanaInicio = new Controlador_FRM_VentanaInicio(this, fRM_VentanaJuego, fRM_VentanaPuntajes, fRM_VentanaCreditos);
+        
+        
+        controlador_FRM_VentanaInicio = new Controlador_FRM_VentanaInicio(this, fRM_VentanaJuego, fRM_VentanaPuntajes, fRM_VentanaCreditos, fRM_RegistroJugador/*, jugador_XML*/);
         
         this.setLocation(200, 10);
+        
         agregarEventos(controlador_FRM_VentanaInicio);
+        
+        this.fRM_RegistroJugador.jB_GuardarRegistroJugador.addActionListener(controlador_FRM_VentanaInicio);
+        this.fRM_VentanaPuntajes.jB_Atras.addActionListener(controlador_FRM_VentanaInicio);
         
     }
     
+    public void manejoDeVentanas() {
+        this.fRM_VentanaPuntajes.setVisible(false);
+        this.setVisible(true);
+    }
     
     public void agregarEventos(Controlador_FRM_VentanaInicio controlador_FRM_VentanaInicio) {
         
@@ -39,7 +55,7 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
         this.jB_Jugar.addActionListener(controlador_FRM_VentanaInicio);
         this.jB_Puntajes.addActionListener(controlador_FRM_VentanaInicio);
         this.jB_Creditos.addActionListener(controlador_FRM_VentanaInicio);
-        
+
     }
 
     /**
@@ -57,15 +73,15 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
         jLabel_Fondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(980, 680));
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jB_Jugar.setBackground(new java.awt.Color(102, 102, 102));
         jB_Jugar.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
-        jB_Jugar.setForeground(new java.awt.Color(0, 204, 204));
+        jB_Jugar.setForeground(new java.awt.Color(204, 204, 204));
         jB_Jugar.setText("Jugar");
-        jB_Jugar.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 1, true));
+        jB_Jugar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), new java.awt.Color(255, 0, 255), new java.awt.Color(255, 0, 255)));
+        jB_Jugar.setFocusPainted(false);
         jB_Jugar.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jB_JugarKeyPressed(evt);
@@ -75,9 +91,10 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
 
         jB_Puntajes.setBackground(new java.awt.Color(102, 102, 102));
         jB_Puntajes.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
-        jB_Puntajes.setForeground(new java.awt.Color(0, 204, 204));
+        jB_Puntajes.setForeground(new java.awt.Color(204, 204, 204));
         jB_Puntajes.setText("Puntajes");
-        jB_Puntajes.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 255, 255), 1, true));
+        jB_Puntajes.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), new java.awt.Color(255, 0, 255), new java.awt.Color(255, 0, 255)));
+        jB_Puntajes.setFocusPainted(false);
         jB_Puntajes.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jB_PuntajesKeyPressed(evt);
@@ -87,10 +104,11 @@ public class FRM_VentanaInicio extends javax.swing.JFrame {
 
         jB_Creditos.setBackground(new java.awt.Color(102, 102, 102));
         jB_Creditos.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
-        jB_Creditos.setForeground(new java.awt.Color(0, 204, 204));
+        jB_Creditos.setForeground(new java.awt.Color(204, 204, 204));
         jB_Creditos.setText("Créditos");
         jB_Creditos.setActionCommand("Creditos");
-        jB_Creditos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 255, 255)));
+        jB_Creditos.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 255, 255), new java.awt.Color(0, 255, 255), new java.awt.Color(255, 0, 255), new java.awt.Color(255, 0, 255)));
+        jB_Creditos.setFocusPainted(false);
         jB_Creditos.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jB_CreditosKeyPressed(evt);
