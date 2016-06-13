@@ -17,16 +17,17 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
     FRM_VentanaInicio fRM_VentanaInicio;
     
     //Constructor de la clase
-    public FRM_VentanaPuntajes(/*Jugador_XML jugador_XML*/) {
+    public FRM_VentanaPuntajes() {
         initComponents();
         
         this.setLocation(200, 10);
-//        this.jugador_XML = jugador_XML;
+        this.jT_NombreJugador.setEditable(false);
         
     }
     
-    public void mostrarPuntaje() {
-        
+    public void mostrarPuntaje(String arregalo[]) {
+        this.jT_NombreJugador.setText(arregalo[0]);
+        this.jT_Puntaje.setText(arregalo[1]);
     }
 
     /**
@@ -40,8 +41,8 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
 
         jB_Atras = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        jT_NombreJugador = new javax.swing.JTextField();
+        jT_Puntaje = new javax.swing.JTextField();
         jLabel_FondoPuntajes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,17 +62,18 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
         jLabel1.setText("NOMBRE");
         getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 170, 170, 50));
 
-        jTextField1.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField1.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
-        jTextField1.setForeground(new java.awt.Color(204, 204, 204));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 230, 340, 50));
+        jT_NombreJugador.setBackground(new java.awt.Color(102, 102, 102));
+        jT_NombreJugador.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
+        jT_NombreJugador.setForeground(new java.awt.Color(204, 204, 204));
+        jT_NombreJugador.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_NombreJugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 230, 340, 50));
 
-        jTextField2.setEditable(false);
-        jTextField2.setBackground(new java.awt.Color(102, 102, 102));
-        jTextField2.setFont(new java.awt.Font("Impact", 2, 24)); // NOI18N
-        jTextField2.setForeground(new java.awt.Color(204, 204, 204));
-        jTextField2.setOpaque(false);
-        getContentPane().add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 160, 120));
+        jT_Puntaje.setEditable(false);
+        jT_Puntaje.setBackground(new java.awt.Color(102, 102, 102));
+        jT_Puntaje.setFont(new java.awt.Font("Impact", 2, 48)); // NOI18N
+        jT_Puntaje.setForeground(new java.awt.Color(204, 204, 204));
+        jT_Puntaje.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        getContentPane().add(jT_Puntaje, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 330, 160, 120));
 
         jLabel_FondoPuntajes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/fondo-juego.png"))); // NOI18N
         getContentPane().add(jLabel_FondoPuntajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 980, 680));
@@ -84,7 +86,7 @@ public class FRM_VentanaPuntajes extends javax.swing.JFrame {
     public javax.swing.JButton jB_Atras;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel_FondoPuntajes;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jT_NombreJugador;
+    private javax.swing.JTextField jT_Puntaje;
     // End of variables declaration//GEN-END:variables
 }

@@ -49,7 +49,7 @@ public class FRM_RegistroJugador extends javax.swing.JFrame {
     }
     
     public void msjJugador() {
-        JOptionPane.showInputDialog(null, "Debería escribir un nombre de jugador", "Registro Jugador",JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Debería escribir un nombre de jugador", "Registro Jugador",JOptionPane.INFORMATION_MESSAGE);
     }
 
     /**
@@ -70,6 +70,11 @@ public class FRM_RegistroJugador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
+        addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentHidden(java.awt.event.ComponentEvent evt) {
+                formComponentHidden(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Impact", 2, 48)); // NOI18N
@@ -107,6 +112,11 @@ public class FRM_RegistroJugador extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formComponentHidden(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_formComponentHidden
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_formComponentHidden
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -33,14 +33,25 @@ public class MetodosJugador {
     }//Fin del constructor de la clase
     
     /*
-    Método que agrega un nuevo estudiante al arrayEstudiante.
+    Método que agrega un nuevo jugador al arrayJugador si este es mayor
     @param informacion[] arreglo de información relacionada al estudiante; como
     cédula, nombre y dirección.
     */
     public void agregarJugador(String informacion[])
     {
-        Jugador temporal = new Jugador(informacion[0], informacion[1]);
-        arrayJugador.add(temporal);
+        Jugador temporal = new Jugador(informacion[0], Integer.parseInt(informacion[1]));
+        
+        if(arrayJugador.isEmpty()) {
+            arrayJugador.add(temporal);
+        }else {
+             if(Integer.parseInt(informacion[1]) > arrayJugador.get(0).getPuntaje()) {
+                System.out.println("Guardó temporal");
+               arrayJugador.get(0).setNombre(informacion[0]);
+               arrayJugador.get(0).setPuntaje(Integer.parseInt(informacion[1]));
+            }else {
+                temporal = null;
+            }   
+        }
         
     }
     
@@ -50,69 +61,26 @@ public class MetodosJugador {
     @return un boolean para demostrar que el estudiante de verdad existe en el
     arrayEstudiante.
     */
-    public boolean consultarEstudiante(String nombre)
+    public boolean consultarEstudiante()
     {
         boolean existe=false;
         
-        for(int contador=0;contador<arrayJugador.size();contador++)
-        {
-            if(arrayJugador.get(contador).getNombre().equals(nombre))
-            {
-                arregloInformacionConsultada[0]=arrayJugador.get(contador).getNombre();
-                arregloInformacionConsultada[1]=arrayJugador.get(contador).getPuntaje();
-                existe=true;
-                contador = arrayJugador.size();
-                
-            }
-        }
+        arregloInformacionConsultada[0]=arrayJugador.get(0).getNombre();
+        arregloInformacionConsultada[1]=""+arrayJugador.get(0).getPuntaje();
+        existe=true;
+       
         return existe;
-    }
+    }//Fin del método consultarEstudiante
     
     /*
-    Método que modifica un estudiante en el arrayEstudiante.
-    @param arreglo[] arreglo de información relacionada al estudiante; como
-    cédula, nombre y dirección. Va a cambiar la información del estudiante con
-    esa información.
-    */
-//    public void modificarEstudiante(String arreglo[])
-//    {
-//        for(int contador=0;contador<arrayEstudiantes.size();contador++)
-//        {
-//            if(arrayEstudiantes.get(contador).getCedula().equals(arreglo[0]))
-//            {
-//                arrayEstudiantes.get(contador).setNombreCompleto(arreglo[1]);
-//                arrayEstudiantes.get(contador).setDireccion(arreglo[2]);
-//                mensajeEstudianteModificado();
-//                contador = arrayEstudiantes.size();
-//            }
-//        }
-//    }
-    
-    /*
-    Método que elimina un estudiante en el arrayEstudiante.
-    @param cedula es el identificador del estudiante para el arrayEstudiante.
-    */
-//    public void eliminarEstudiante(String cedula)
-//    {
-//        for(int contador=0;contador<arrayEstudiantes.size();contador++)
-//        {
-//            if(arrayEstudiantes.get(contador).getCedula().equals(cedula))
-//            {
-//                arrayEstudiantes.remove(contador);
-//                mensajeEstudianteEliminado();
-//                contador = arrayEstudiantes.size();
-//            }
-//        }
-//    }
-    
-    /*
-    Método que devuelve un arreglo
-    @return arreglo de dos elementos que contiene la información consultada
+    Método que retorna arrayUsuario como un arreglo
     */
     public String[] getArregloInformacion()
     {
+        
         return this.arregloInformacionConsultada;
-    }    
+        
+    }//Fin del método getArregloInformacion
     
     /*
     Método que crea un nuevo archivo. La información perteneciente al array
@@ -127,49 +95,6 @@ public class MetodosJugador {
             archivosJugador.escribirInfoArchivoJugador(arrayJugador.get(i));
             
         }
-    }
-    
-    /*
-    Método que muestra un mensaje al usuario
-    */
-    public void mensajeConsultar()
-    {
-        JOptionPane.showMessageDialog(null, "El estudiante no"
-                        + " se encuentra registrado.", "Universidad de"
-                                + " Costa Rica", JOptionPane.OK_OPTION);
-    }
-    
-    /*
-    Método que muestra un mensaje al usuario
-    */
-    public void mensajejUsuario()
-    {
-        JOptionPane.showMessageDialog(null, "Acción realizada correctamente",
-        "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
-    }
-     
-    /*
-    Método que muestra un mensaje al usuario
-    */
-    public void mensajeEstudianteAgregado() {
-        JOptionPane.showMessageDialog(null, "El estudiante fue agregado en el"
-                + " registro.", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    /*
-    Método que muestra un mensaje al usuario
-    */
-    public void mensajeEstudianteEliminado() {
-        JOptionPane.showMessageDialog(null, "El estudiante fue eliminado en el"
-                + " registro.", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
-    }
-    
-    /*
-    Método que muestra un mensaje al usuario
-    */
-    public void mensajeEstudianteModificado() {
-        JOptionPane.showMessageDialog(null, "El estudiante fue modificado en el"
-                + " registro.", "Universidad de Costa Rica", JOptionPane.INFORMATION_MESSAGE);
-    }
+    }//Fin del método escribirInformacionArchivo
     
 }//Fin de la clase MetodosEstudiante
